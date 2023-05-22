@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prettier:check": "prettier --check .",
+    "prettier:write": "prettier --write ."
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "^1.0.0",
@@ -22,6 +24,8 @@
     "@types/react-dom": "^18.0.3",
     "eslint": "^8.15.0",
     "eslint-config-next": "^12.1.6",
+    "eslint-config-prettier": "^8.8.0",
+    "prettier": "2.8.8",
     "typescript": "^5.0.4"
   }
 }

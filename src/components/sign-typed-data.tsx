@@ -3,6 +3,10 @@
 import { useEffect, useState } from 'react'
 import { recoverTypedDataAddress } from 'viem'
 import { type Address, useSignTypedData } from 'wagmi'
+import { Terminal, AlertCircle } from 'lucide-react'
+
+import { Button } from '@/components/ui/button'
+import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert'
 
 const domain = {
   name: 'Ether Mail',
@@ -61,17 +65,33 @@ export function SignTypedData() {
 
   return (
     <>
-      <button disabled={isLoading} onClick={() => signTypedData()}>
-        {isLoading ? 'Check Wallet' : 'Sign Message'}
-      </button>
+      <Button
+        variant="outline"
+        disabled={isLoading}
+        onClick={() => signTypedData()}
+      >
+        Sign Message
+      </Button>
+
+      {isLoading && <div className="mt-3">Check Wallet...</div>}
 
       {data && (
-        <div>
-          <div>Signature: {data}</div>
-          <div>Recovered address {recoveredAddress}</div>
-        </div>
+        <Alert className="mt-4">
+          <Terminal className="h-4 w-4" />
+          <AlertTitle>Success!</AlertTitle>
+          <AlertDescription className="mt-2">
+            <p className="truncate">Signature: {data}</p>
+            <p className="truncate">Recovered address: {recoveredAddress}</p>
+          </AlertDescription>
+        </Alert>
       )}
-      {error && <div>Error: {error?.message}</div>}
+      {error && (
+        <Alert className="mt-4" variant="destructive">
+          <AlertCircle className="h-4 w-4" />
+          <AlertTitle>Error</AlertTitle>
+          <AlertDescription>{error?.message}</AlertDescription>
+        </Alert>
+      )}
     </>
   )
 }

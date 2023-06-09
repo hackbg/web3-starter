@@ -1,8 +1,16 @@
+import '@/styles/globals.css'
 import '@rainbow-me/rainbowkit/styles.css'
-import { Providers } from './providers'
+
+import { siteConfig } from '@/config/site'
+import { fontSans } from '@/lib/fonts'
+import { cn } from '@/lib/utils'
+import { SiteHeader } from '@/components/site-header'
+import { SiteFooter } from '@/components/site-footer'
+import { ThemeProvider } from '@/components/theme-provider'
+import { Providers } from '@/app/providers'
 
 export const metadata = {
-  title: 'wagmi',
+  title: siteConfig.name,
 }
 
 export default function RootLayout({
@@ -12,8 +20,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <Providers>{children}</Providers>
+      <body
+        className={cn(
+          'min-h-screen bg-background font-sans antialiased',
+          fontSans.variable,
+        )}
+      >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <div className="relative flex min-h-screen flex-col">
+            <Providers>
+              <SiteHeader />
+              <div className="flex-1">{children}</div>
+              <SiteFooter />
+            </Providers>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   )

@@ -28,7 +28,7 @@ import { WatchPendingTransactions } from '@/components/watch-pending-transaction
 import { WriteContract } from '@/components/write-contract'
 import { WriteContractPrepared } from '@/components/write-contract-prepared'
 
-export function Page() {
+export default function Page() {
   return (
     <div className="container relative pb-10">
       <PageHeader>
@@ -219,5 +219,3 @@ export function Page() {
     </div>
   )
 }
-
-export default Page

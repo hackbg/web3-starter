@@ -27,6 +27,7 @@ import { WatchContractEvents } from '@/components/watch-contract-events'
 import { WatchPendingTransactions } from '@/components/watch-pending-transactions'
 import { WriteContract } from '@/components/write-contract'
 import { WriteContractPrepared } from '@/components/write-contract-prepared'
+import { ClientOnly } from '@/components/client-only'
 
 export default function Page() {
   return (
@@ -53,169 +54,171 @@ export default function Page() {
         </div>
       </PageHeader>
 
-      <Connected>
-        <Card className="my-4 md:w-[720px]">
-          <CardHeader>
-            <CardTitle>Network</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <NetworkSwitcher />
-          </CardContent>
-        </Card>
+      <ClientOnly>
+        <Connected>
+          <Card className="my-4 md:w-[720px]">
+            <CardHeader>
+              <CardTitle>Network</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <NetworkSwitcher />
+            </CardContent>
+          </Card>
 
-        <Card className="mb-4 md:w-[720px]">
-          <CardHeader>
-            <CardTitle>Account</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Account />
-          </CardContent>
-        </Card>
+          <Card className="mb-4 md:w-[720px]">
+            <CardHeader>
+              <CardTitle>Account</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Account />
+            </CardContent>
+          </Card>
 
-        <Card className="mb-4 md:w-[720px]">
-          <CardHeader>
-            <CardTitle>Account Balance</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <AccountBalance />
-          </CardContent>
-        </Card>
+          <Card className="mb-4 md:w-[720px]">
+            <CardHeader>
+              <CardTitle>Account Balance</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <AccountBalance />
+            </CardContent>
+          </Card>
 
-        <Card className="mb-4 md:w-[720px]">
-          <CardHeader>
-            <CardTitle>Find Balance</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <FindBalance />
-          </CardContent>
-        </Card>
+          <Card className="mb-4 md:w-[720px]">
+            <CardHeader>
+              <CardTitle>Find Balance</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <FindBalance />
+            </CardContent>
+          </Card>
 
-        <Card className="mb-4 md:w-[720px]">
-          <CardHeader>
-            <CardTitle>Block Number</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <BlockNumber />
-          </CardContent>
-        </Card>
+          <Card className="mb-4 md:w-[720px]">
+            <CardHeader>
+              <CardTitle>Block Number</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <BlockNumber />
+            </CardContent>
+          </Card>
 
-        <Card className="mb-4 md:w-[720px]">
-          <CardHeader>
-            <CardTitle>Token Balance</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <BalanceOf />
-          </CardContent>
-        </Card>
+          <Card className="mb-4 md:w-[720px]">
+            <CardHeader>
+              <CardTitle>Token Balance</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <BalanceOf />
+            </CardContent>
+          </Card>
 
-        <Card className="mb-4 md:w-[720px]">
-          <CardHeader>
-            <CardTitle>Token Total Supply</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <TotalSupply />
-          </CardContent>
-        </Card>
+          <Card className="mb-4 md:w-[720px]">
+            <CardHeader>
+              <CardTitle>Token Total Supply</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <TotalSupply />
+            </CardContent>
+          </Card>
 
-        <Card className="mb-4 md:w-[720px]">
-          <CardHeader>
-            <CardTitle>Read Contracts</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ReadContracts />
-          </CardContent>
-        </Card>
+          <Card className="mb-4 md:w-[720px]">
+            <CardHeader>
+              <CardTitle>Read Contracts</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ReadContracts />
+            </CardContent>
+          </Card>
 
-        <Card className="mb-4 md:w-[720px]">
-          <CardHeader>
-            <CardTitle>Read Contract Infinite</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ReadContractsInfinite />
-          </CardContent>
-        </Card>
+          <Card className="mb-4 md:w-[720px]">
+            <CardHeader>
+              <CardTitle>Read Contract Infinite</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ReadContractsInfinite />
+            </CardContent>
+          </Card>
 
-        <Card className="mb-4 md:w-[720px]">
-          <CardHeader>
-            <CardTitle>Send Transaction</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <SendTransaction />
-          </CardContent>
-        </Card>
+          <Card className="mb-4 md:w-[720px]">
+            <CardHeader>
+              <CardTitle>Send Transaction</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <SendTransaction />
+            </CardContent>
+          </Card>
 
-        <Card className="mb-4 md:w-[720px]">
-          <CardHeader>
-            <CardTitle>Send Transaction (Prepared)</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <SendTransactionPrepared />
-          </CardContent>
-        </Card>
+          <Card className="mb-4 md:w-[720px]">
+            <CardHeader>
+              <CardTitle>Send Transaction (Prepared)</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <SendTransactionPrepared />
+            </CardContent>
+          </Card>
 
-        <Card className="mb-4 md:w-[720px]">
-          <CardHeader>
-            <CardTitle>Sign Message</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <SignMessage />
-          </CardContent>
-        </Card>
+          <Card className="mb-4 md:w-[720px]">
+            <CardHeader>
+              <CardTitle>Sign Message</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <SignMessage />
+            </CardContent>
+          </Card>
 
-        <Card className="mb-4 md:w-[720px]">
-          <CardHeader>
-            <CardTitle>Token</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Token />
-          </CardContent>
-        </Card>
+          <Card className="mb-4 md:w-[720px]">
+            <CardHeader>
+              <CardTitle>Token</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Token />
+            </CardContent>
+          </Card>
 
-        <Card className="mb-4 md:w-[720px]">
-          <CardHeader>
-            <CardTitle>Sign Typed Data</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <SignTypedData />
-          </CardContent>
-        </Card>
+          <Card className="mb-4 md:w-[720px]">
+            <CardHeader>
+              <CardTitle>Sign Typed Data</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <SignTypedData />
+            </CardContent>
+          </Card>
 
-        <Card className="mb-4 md:w-[720px]">
-          <CardHeader>
-            <CardTitle>Watch Contract Events</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <WatchContractEvents />
-          </CardContent>
-        </Card>
+          <Card className="mb-4 md:w-[720px]">
+            <CardHeader>
+              <CardTitle>Watch Contract Events</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <WatchContractEvents />
+            </CardContent>
+          </Card>
 
-        <Card className="mb-4 md:w-[720px]">
-          <CardHeader>
-            <CardTitle>Watch Pending Transactions</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <WatchPendingTransactions />
-          </CardContent>
-        </Card>
+          <Card className="mb-4 md:w-[720px]">
+            <CardHeader>
+              <CardTitle>Watch Pending Transactions</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <WatchPendingTransactions />
+            </CardContent>
+          </Card>
 
-        <Card className="mb-4 md:w-[720px]">
-          <CardHeader>
-            <CardTitle>Write Contract</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <WriteContract />
-          </CardContent>
-        </Card>
+          <Card className="mb-4 md:w-[720px]">
+            <CardHeader>
+              <CardTitle>Write Contract</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <WriteContract />
+            </CardContent>
+          </Card>
 
-        <Card className="mb-4 md:w-[720px]">
-          <CardHeader>
-            <CardTitle>Write Contract (Prepared)</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <WriteContractPrepared />
-          </CardContent>
-        </Card>
-      </Connected>
+          <Card className="mb-4 md:w-[720px]">
+            <CardHeader>
+              <CardTitle>Write Contract (Prepared)</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <WriteContractPrepared />
+            </CardContent>
+          </Card>
+        </Connected>
+      </ClientOnly>
     </div>
   )
 }

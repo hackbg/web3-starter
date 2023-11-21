@@ -26,7 +26,7 @@ export function NetworkSwitcher() {
       {switchNetwork && (
         <div className="mt-4">
           <DropdownMenu>
-            <DropdownMenuTrigger>
+            <DropdownMenuTrigger asChild>
               <Button variant="outline">
                 {isLoading ? 'Switching...' : 'Switch'}
               </Button>

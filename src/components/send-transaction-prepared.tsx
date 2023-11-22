@@ -34,8 +34,6 @@ export function SendTransactionPrepared() {
     isSuccess,
   } = useWaitForTransaction({ hash: data?.hash })
 
-  console.log(isError, error?.message)
-
   return (
     <>
       <form

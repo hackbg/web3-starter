@@ -2,9 +2,15 @@
 
 import { useAccount } from 'wagmi'
 
-export function Connected({ children }: { children: React.ReactNode }) {
+type ConnectedProps = {
+  children: React.ReactNode
+  fallback?: React.ReactNode
+}
+
+export function Connected({ children, fallback }: ConnectedProps) {
   const { isConnected } = useAccount()
 
-  if (!isConnected) return null
-  return <>{children}</>
+  if (!isConnected) return fallback || null
+
+  return children
 }

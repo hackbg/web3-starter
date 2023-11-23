@@ -35,8 +35,7 @@ export default function Page() {
       <PageHeader>
         <PageHeaderHeading>Web3 Starter</PageHeaderHeading>
         <PageHeaderDescription>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Create Ethereum dApps optimized for user and developer experience.
         </PageHeaderDescription>
         <div className="flex w-full items-center space-x-4 pb-8 pt-4 md:pb-10">
           <Link href="/" className={cn(buttonVariants())}>

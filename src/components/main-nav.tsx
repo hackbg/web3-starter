@@ -30,76 +30,15 @@ export function MainNav() {
           Home
         </Link>
         <Link
-          href="/network"
+          href="/demo"
           className={cn(
             'transition-colors hover:text-foreground/80',
-            pathname === '/' ? 'text-foreground' : 'text-foreground/60',
+            pathname.includes('demo')
+              ? 'text-foreground'
+              : 'text-foreground/60',
           )}
         >
-          Network
-        </Link>
-        <Link
-          href="/account"
-          className={cn(
-            'transition-colors hover:text-foreground/80',
-            pathname === '/' ? 'text-foreground' : 'text-foreground/60',
-          )}
-        >
-          Account
-        </Link>
-        <Link
-          href="/token"
-          className={cn(
-            'transition-colors hover:text-foreground/80',
-            pathname === '/' ? 'text-foreground' : 'text-foreground/60',
-          )}
-        >
-          Token
-        </Link>
-        <Link
-          href="/read-contract"
-          className={cn(
-            'transition-colors hover:text-foreground/80',
-            pathname === '/' ? 'text-foreground' : 'text-foreground/60',
-          )}
-        >
-          Read Contract
-        </Link>
-        <Link
-          href="/write-contract"
-          className={cn(
-            'transition-colors hover:text-foreground/80',
-            pathname === '/' ? 'text-foreground' : 'text-foreground/60',
-          )}
-        >
-          Write Contract
-        </Link>
-        <Link
-          href="/send-tx"
-          className={cn(
-            'transition-colors hover:text-foreground/80',
-            pathname === '/' ? 'text-foreground' : 'text-foreground/60',
-          )}
-        >
-          Send Transaction
-        </Link>
-        <Link
-          href="/sign"
-          className={cn(
-            'transition-colors hover:text-foreground/80',
-            pathname === '/' ? 'text-foreground' : 'text-foreground/60',
-          )}
-        >
-          Sign
-        </Link>
-        <Link
-          href="/watch"
-          className={cn(
-            'transition-colors hover:text-foreground/80',
-            pathname === '/' ? 'text-foreground' : 'text-foreground/60',
-          )}
-        >
-          Watch
+          Demo
         </Link>
       </nav>
     </div>

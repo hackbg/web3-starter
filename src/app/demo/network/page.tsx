@@ -1,5 +1,5 @@
-import { SignMessage } from '@/components/sign-message'
-import { SignTypedData } from '@/components/sign-typed-data'
+import { NetworkSwitcher } from '@/components/network-switcher'
+import { BlockNumber } from '@/components/block-number'
 import { CardSkeleton } from '@/components/card-skeleton'
 import { ClientOnly } from '@/components/client-only'
 import { Connected } from '@/components/connected'
@@ -13,11 +13,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 export default function Page() {
   return (
-    <div className="container relative pb-10">
+    <>
       <PageHeader className="pb-8">
-        <PageHeaderHeading>Sign</PageHeaderHeading>
+        <PageHeaderHeading>Network</PageHeaderHeading>
         <PageHeaderDescription>
-          Sign a message with an Ethereum account.
+          Interacting with the Ethereum network.
         </PageHeaderDescription>
       </PageHeader>
 
@@ -35,25 +35,25 @@ export default function Page() {
             </div>
           }
         >
-          <Card className="mb-4 md:w-[720px]">
+          <Card className="my-4 md:w-[720px]">
             <CardHeader>
-              <CardTitle>Sign Message</CardTitle>
+              <CardTitle>Network</CardTitle>
             </CardHeader>
             <CardContent>
-              <SignMessage />
+              <NetworkSwitcher />
             </CardContent>
           </Card>
 
           <Card className="mb-4 md:w-[720px]">
             <CardHeader>
-              <CardTitle>Sign Typed Data</CardTitle>
+              <CardTitle>Block Number</CardTitle>
             </CardHeader>
             <CardContent>
-              <SignTypedData />
+              <BlockNumber />
             </CardContent>
           </Card>
         </Connected>
       </ClientOnly>
-    </div>
+    </>
   )
 }

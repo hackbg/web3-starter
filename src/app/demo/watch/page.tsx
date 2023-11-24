@@ -1,5 +1,5 @@
-import { SendTransaction } from '@/components/send-transaction'
-import { SendTransactionPrepared } from '@/components/send-transaction-prepared'
+import { WatchContractEvents } from '@/components/watch-contract-events'
+import { WatchPendingTransactions } from '@/components/watch-pending-transactions'
 import { CardSkeleton } from '@/components/card-skeleton'
 import { ClientOnly } from '@/components/client-only'
 import { Connected } from '@/components/connected'
@@ -13,11 +13,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 export default function Page() {
   return (
-    <div className="container relative pb-10">
+    <>
       <PageHeader className="pb-8">
-        <PageHeaderHeading>Send Transaction</PageHeaderHeading>
+        <PageHeaderHeading>Watch</PageHeaderHeading>
         <PageHeaderDescription>
-          Send transactions to an Ethereum account.
+          Watching the network for events and transactions.
         </PageHeaderDescription>
       </PageHeader>
 
@@ -37,23 +37,23 @@ export default function Page() {
         >
           <Card className="mb-4 md:w-[720px]">
             <CardHeader>
-              <CardTitle>Send Transaction</CardTitle>
+              <CardTitle>Watch Contract Events</CardTitle>
             </CardHeader>
             <CardContent>
-              <SendTransaction />
+              <WatchContractEvents />
             </CardContent>
           </Card>
 
           <Card className="mb-4 md:w-[720px]">
             <CardHeader>
-              <CardTitle>Send Transaction (Prepared)</CardTitle>
+              <CardTitle>Watch Pending Transactions</CardTitle>
             </CardHeader>
             <CardContent>
-              <SendTransactionPrepared />
+              <WatchPendingTransactions />
             </CardContent>
           </Card>
         </Connected>
       </ClientOnly>
-    </div>
+    </>
   )
 }

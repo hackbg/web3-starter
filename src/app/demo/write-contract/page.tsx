@@ -1,5 +1,5 @@
-import { WatchContractEvents } from '@/components/watch-contract-events'
-import { WatchPendingTransactions } from '@/components/watch-pending-transactions'
+import { WriteContract } from '@/components/write-contract'
+import { WriteContractPrepared } from '@/components/write-contract-prepared'
 import { CardSkeleton } from '@/components/card-skeleton'
 import { ClientOnly } from '@/components/client-only'
 import { Connected } from '@/components/connected'
@@ -13,11 +13,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 export default function Page() {
   return (
-    <div className="container relative pb-10">
+    <>
       <PageHeader className="pb-8">
-        <PageHeaderHeading>Watch</PageHeaderHeading>
+        <PageHeaderHeading>Write Contract</PageHeaderHeading>
         <PageHeaderDescription>
-          Watching the network for events and transactions.
+          Send transactions to a smart contract.
         </PageHeaderDescription>
       </PageHeader>
 
@@ -37,23 +37,23 @@ export default function Page() {
         >
           <Card className="mb-4 md:w-[720px]">
             <CardHeader>
-              <CardTitle>Watch Contract Events</CardTitle>
+              <CardTitle>Write Contract</CardTitle>
             </CardHeader>
             <CardContent>
-              <WatchContractEvents />
+              <WriteContract />
             </CardContent>
           </Card>
 
           <Card className="mb-4 md:w-[720px]">
             <CardHeader>
-              <CardTitle>Watch Pending Transactions</CardTitle>
+              <CardTitle>Write Contract (Prepared)</CardTitle>
             </CardHeader>
             <CardContent>
-              <WatchPendingTransactions />
+              <WriteContractPrepared />
             </CardContent>
           </Card>
         </Connected>
       </ClientOnly>
-    </div>
+    </>
   )
 }

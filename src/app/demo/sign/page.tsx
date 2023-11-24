@@ -1,5 +1,5 @@
-import { ReadContracts } from '@/components/read-contracts'
-import { ReadContractsInfinite } from '@/components/read-contracts-infinite'
+import { SignMessage } from '@/components/sign-message'
+import { SignTypedData } from '@/components/sign-typed-data'
 import { CardSkeleton } from '@/components/card-skeleton'
 import { ClientOnly } from '@/components/client-only'
 import { Connected } from '@/components/connected'
@@ -13,11 +13,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 export default function Page() {
   return (
-    <div className="container relative pb-10">
+    <>
       <PageHeader className="pb-8">
-        <PageHeaderHeading>Read Contract</PageHeaderHeading>
+        <PageHeaderHeading>Sign</PageHeaderHeading>
         <PageHeaderDescription>
-          Reading from a smart contract&apos;s state.
+          Sign a message with an Ethereum account.
         </PageHeaderDescription>
       </PageHeader>
 
@@ -37,23 +37,23 @@ export default function Page() {
         >
           <Card className="mb-4 md:w-[720px]">
             <CardHeader>
-              <CardTitle>Read Contract</CardTitle>
+              <CardTitle>Sign Message</CardTitle>
             </CardHeader>
             <CardContent>
-              <ReadContracts />
+              <SignMessage />
             </CardContent>
           </Card>
 
           <Card className="mb-4 md:w-[720px]">
             <CardHeader>
-              <CardTitle>Read Contract Infinite</CardTitle>
+              <CardTitle>Sign Typed Data</CardTitle>
             </CardHeader>
             <CardContent>
-              <ReadContractsInfinite />
+              <SignTypedData />
             </CardContent>
           </Card>
         </Connected>
       </ClientOnly>
-    </div>
+    </>
   )
 }

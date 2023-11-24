@@ -1,5 +1,5 @@
-import { WriteContract } from '@/components/write-contract'
-import { WriteContractPrepared } from '@/components/write-contract-prepared'
+import { Token } from '@/components/token'
+import { BalanceOf, TotalSupply } from '@/components/read-contract'
 import { CardSkeleton } from '@/components/card-skeleton'
 import { ClientOnly } from '@/components/client-only'
 import { Connected } from '@/components/connected'
@@ -13,11 +13,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 export default function Page() {
   return (
-    <div className="container relative pb-10">
+    <>
       <PageHeader className="pb-8">
-        <PageHeaderHeading>Write Contract</PageHeaderHeading>
+        <PageHeaderHeading>Token</PageHeaderHeading>
         <PageHeaderDescription>
-          Send transactions to a smart contract.
+          Interacting with an ERC20 token.
         </PageHeaderDescription>
       </PageHeader>
 
@@ -37,23 +37,32 @@ export default function Page() {
         >
           <Card className="mb-4 md:w-[720px]">
             <CardHeader>
-              <CardTitle>Write Contract</CardTitle>
+              <CardTitle>Token Balance</CardTitle>
             </CardHeader>
             <CardContent>
-              <WriteContract />
+              <BalanceOf />
             </CardContent>
           </Card>
 
           <Card className="mb-4 md:w-[720px]">
             <CardHeader>
-              <CardTitle>Write Contract (Prepared)</CardTitle>
+              <CardTitle>Token Total Supply</CardTitle>
             </CardHeader>
             <CardContent>
-              <WriteContractPrepared />
+              <TotalSupply />
+            </CardContent>
+          </Card>
+
+          <Card className="mb-4 md:w-[720px]">
+            <CardHeader>
+              <CardTitle>Token</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Token />
             </CardContent>
           </Card>
         </Connected>
       </ClientOnly>
-    </div>
+    </>
   )
 }

@@ -1,5 +1,5 @@
-import { Token } from '@/components/token'
-import { BalanceOf, TotalSupply } from '@/components/read-contract'
+import { Account } from '@/components/account'
+import { AccountBalance, FindBalance } from '@/components/balance'
 import { CardSkeleton } from '@/components/card-skeleton'
 import { ClientOnly } from '@/components/client-only'
 import { Connected } from '@/components/connected'
@@ -13,11 +13,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 export default function Page() {
   return (
-    <div className="container relative pb-10">
+    <>
       <PageHeader className="pb-8">
-        <PageHeaderHeading>Token</PageHeaderHeading>
+        <PageHeaderHeading>Account</PageHeaderHeading>
         <PageHeaderDescription>
-          Interacting with an ERC20 token.
+          Interacting with an Ethereum account.
         </PageHeaderDescription>
       </PageHeader>
 
@@ -37,32 +37,32 @@ export default function Page() {
         >
           <Card className="mb-4 md:w-[720px]">
             <CardHeader>
-              <CardTitle>Token Balance</CardTitle>
+              <CardTitle>Account</CardTitle>
             </CardHeader>
             <CardContent>
-              <BalanceOf />
+              <Account />
             </CardContent>
           </Card>
 
           <Card className="mb-4 md:w-[720px]">
             <CardHeader>
-              <CardTitle>Token Total Supply</CardTitle>
+              <CardTitle>Account Balance</CardTitle>
             </CardHeader>
             <CardContent>
-              <TotalSupply />
+              <AccountBalance />
             </CardContent>
           </Card>
 
           <Card className="mb-4 md:w-[720px]">
             <CardHeader>
-              <CardTitle>Token</CardTitle>
+              <CardTitle>Find Balance</CardTitle>
             </CardHeader>
             <CardContent>
-              <Token />
+              <FindBalance />
             </CardContent>
           </Card>
         </Connected>
       </ClientOnly>
-    </div>
+    </>
   )
 }

@@ -19,8 +19,8 @@ export default function Page() {
           Create Ethereum dApps optimized for user and developer experience.
         </PageHeaderDescription>
         <div className="flex w-full items-center space-x-4 pb-8 pt-4 md:pb-10">
-          <Link href="/" className={cn(buttonVariants())}>
-            Get Started
+          <Link href="/demo" className={cn(buttonVariants())}>
+            Go to Demo
           </Link>
           <Link
             target="_blank"

@@ -1,5 +1,5 @@
-import { NetworkSwitcher } from '@/components/network-switcher'
-import { BlockNumber } from '@/components/block-number'
+import { SendTransaction } from '@/components/send-transaction'
+import { SendTransactionPrepared } from '@/components/send-transaction-prepared'
 import { CardSkeleton } from '@/components/card-skeleton'
 import { ClientOnly } from '@/components/client-only'
 import { Connected } from '@/components/connected'
@@ -13,11 +13,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 export default function Page() {
   return (
-    <div className="container relative pb-10">
+    <>
       <PageHeader className="pb-8">
-        <PageHeaderHeading>Network</PageHeaderHeading>
+        <PageHeaderHeading>Send Transaction</PageHeaderHeading>
         <PageHeaderDescription>
-          Interacting with the Ethereum network.
+          Send transactions to an Ethereum account.
         </PageHeaderDescription>
       </PageHeader>
 
@@ -35,25 +35,25 @@ export default function Page() {
             </div>
           }
         >
-          <Card className="my-4 md:w-[720px]">
+          <Card className="mb-4 md:w-[720px]">
             <CardHeader>
-              <CardTitle>Network</CardTitle>
+              <CardTitle>Send Transaction</CardTitle>
             </CardHeader>
             <CardContent>
-              <NetworkSwitcher />
+              <SendTransaction />
             </CardContent>
           </Card>
 
           <Card className="mb-4 md:w-[720px]">
             <CardHeader>
-              <CardTitle>Block Number</CardTitle>
+              <CardTitle>Send Transaction (Prepared)</CardTitle>
             </CardHeader>
             <CardContent>
-              <BlockNumber />
+              <SendTransactionPrepared />
             </CardContent>
           </Card>
         </Connected>
       </ClientOnly>
-    </div>
+    </>
   )
 }

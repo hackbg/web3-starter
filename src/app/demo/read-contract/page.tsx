@@ -1,5 +1,5 @@
-import { Account } from '@/components/account'
-import { AccountBalance, FindBalance } from '@/components/balance'
+import { ReadContracts } from '@/components/read-contracts'
+import { ReadContractsInfinite } from '@/components/read-contracts-infinite'
 import { CardSkeleton } from '@/components/card-skeleton'
 import { ClientOnly } from '@/components/client-only'
 import { Connected } from '@/components/connected'
@@ -13,11 +13,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 export default function Page() {
   return (
-    <div className="container relative pb-10">
+    <>
       <PageHeader className="pb-8">
-        <PageHeaderHeading>Account</PageHeaderHeading>
+        <PageHeaderHeading>Read Contract</PageHeaderHeading>
         <PageHeaderDescription>
-          Interacting with an Ethereum account.
+          Reading from a smart contract&apos;s state.
         </PageHeaderDescription>
       </PageHeader>
 
@@ -37,32 +37,23 @@ export default function Page() {
         >
           <Card className="mb-4 md:w-[720px]">
             <CardHeader>
-              <CardTitle>Account</CardTitle>
+              <CardTitle>Read Contract</CardTitle>
             </CardHeader>
             <CardContent>
-              <Account />
+              <ReadContracts />
             </CardContent>
           </Card>
 
           <Card className="mb-4 md:w-[720px]">
             <CardHeader>
-              <CardTitle>Account Balance</CardTitle>
+              <CardTitle>Read Contract Infinite</CardTitle>
             </CardHeader>
             <CardContent>
-              <AccountBalance />
-            </CardContent>
-          </Card>
-
-          <Card className="mb-4 md:w-[720px]">
-            <CardHeader>
-              <CardTitle>Find Balance</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <FindBalance />
+              <ReadContractsInfinite />
             </CardContent>
           </Card>
         </Connected>
       </ClientOnly>
-    </div>
+    </>
   )
 }

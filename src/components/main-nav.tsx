@@ -29,6 +29,17 @@ export function MainNav() {
         >
           Home
         </Link>
+        <Link
+          href="/demo"
+          className={cn(
+            'transition-colors hover:text-foreground/80',
+            pathname.includes('demo')
+              ? 'text-foreground'
+              : 'text-foreground/60',
+          )}
+        >
+          Demo
+        </Link>
       </nav>
     </div>
   )

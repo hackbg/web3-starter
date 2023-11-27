@@ -16,7 +16,7 @@ import { Button } from '@/components/ui/button'
 export function ReadContractsInfinite() {
   const { data, isLoading, isSuccess, fetchNextPage } =
     useContractInfiniteReads({
-      cacheKey: 'lootTokenURIs',
+      cacheKey: 'wagmiTokenURIs',
       ...paginatedIndexesConfig(
         (index: number) => [
           {

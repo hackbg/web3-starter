@@ -1,6 +1,6 @@
 'use client'
 
-import { useNetwork, useSwitchNetwork } from 'wagmi'
+import { useNetwork, useSwitchNetwork, mainnet } from 'wagmi'
 import { AlertCircle } from 'lucide-react'
 
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
@@ -11,6 +11,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+
+const otherChains = [mainnet]
 
 export function NetworkSwitcher() {
   const { chain } = useNetwork()
@@ -32,7 +34,7 @@ export function NetworkSwitcher() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
-              {chains.map((x) =>
+              {[...chains, ...otherChains].map((x) =>
                 x.id === chain?.id ? null : (
                   <DropdownMenuItem
                     key={x.id}

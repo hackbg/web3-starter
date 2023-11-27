@@ -17,7 +17,7 @@ const contractReads = [
   {
     ...wagmiContractConfig,
     functionName: 'balanceOf',
-    args: ['0xa5cc3c03994DB5b0d9A5eEdD10CabaB0813678AC'],
+    args: ['0x74f65E8feaCC744e0A6Bf654aB75F0A2aee434e2'],
   },
   {
     ...wagmiContractConfig,

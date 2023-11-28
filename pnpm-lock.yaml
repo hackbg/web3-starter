@@ -2,8 +2,8 @@ lockfileVersion: '6.0'
 
 dependencies:
   '@fadroma/scrt':
-    specifier: 11.0.0-rc.21
-    version: 11.0.0-rc.21
+    specifier: 11.0.0-rc.22
+    version: 11.0.0-rc.22
   '@radix-ui/react-alert-dialog':
     specifier: ^1.0.5
     version: 1.0.5(@types/react-dom@18.2.16)(@types/react@18.2.38)(react-dom@18.2.0)(react@18.2.0)
@@ -200,10 +200,10 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@fadroma/agent@2.0.0-rc.15:
-    resolution: {integrity: sha512-B2TyH49pvNmJbbmvbF4488lMA43p64cv68BmFAjt/zhWSKchfp3BlXMoTz5mxItxm8JvBQLGg3TbpftQ6jLaBg==}
+  /@fadroma/agent@2.0.0-rc.16:
+    resolution: {integrity: sha512-plIdiQHxS77NJ2/9IzqvzEFNFpUdkZNTi0eq37E7RQQJvP+1go9YtVJrRYzicymCuYPo1yXMs610NFyVe++ZkA==}
     dependencies:
-      '@hackbg/4mat': 1.0.1
+      '@hackbg/4mat': 2.0.0
       '@hackbg/dump': 1.0.1
       '@hackbg/hide': 1.0.3
       '@hackbg/into': 1.0.1
@@ -211,12 +211,12 @@ packages:
       '@hackbg/oops': 1.1.0
     dev: false
 
-  /@fadroma/scrt@11.0.0-rc.21:
-    resolution: {integrity: sha512-m4Dr6Zdq5zo1YW1fX5/0tE4Oda4kiWvvzrWIMwtQ/+7WweyeeXPDHwyk0+3iimgvUcQZl57wWFj+rmUtMqHOQw==}
+  /@fadroma/scrt@11.0.0-rc.22:
+    resolution: {integrity: sha512-8oCwet9lp3N5lO5sBZzuAye7P19A0VOOFD8wgyK4EKDQd6CGBA1uO7OFpnkDeO2mSroNrDvmt22pmiG9KRZskw==}
     dependencies:
-      '@fadroma/agent': 2.0.0-rc.15
+      '@fadroma/agent': 2.0.0-rc.16
       '@hackbg/conf': 3.1.5
-      '@hackbg/secretjs-esm': 1.9.3-patch.37
+      '@hackbg/secretjs-esm': 1.9.3-patch.38
       '@noble/ed25519': 2.0.0
       '@noble/secp256k1': 2.0.0
     transitivePeerDependencies:
@@ -244,15 +244,13 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@hackbg/4mat@1.0.1:
-    resolution: {integrity: sha512-uSTQnhO9OZovCZ8/JiT6ICsY5YUkimESOj6QcZ2q7kwuuo8xzospISJCGLjfZ2EarV4J68Urlsf6YUMi/gsp6A==}
+  /@hackbg/4mat@2.0.0:
+    resolution: {integrity: sha512-DypQ2VyqyuA3WjZwPDEEgGtSHxvM3Jq31oj4uMZ+taG+9qefNUWAAi6hm3jW6yFngvAiH6dWea/DAQRyJ/K6TQ==}
     dependencies:
       '@noble/hashes': 1.3.2
       '@scure/base': 1.1.3
       '@scure/bip32': 1.3.2
       '@scure/bip39': 1.2.1
-      '@types/secure-random': 1.1.3
-      secure-random: 1.1.2
     dev: false
 
   /@hackbg/allo@1.0.2:
@@ -317,8 +315,8 @@ packages:
       long: 4.0.0
     dev: false
 
-  /@hackbg/secretjs-esm@1.9.3-patch.37:
-    resolution: {integrity: sha512-jEdmElc4qWYapS1k3nB8MqOu/c2W/wv5FfQ86H+d4lygAFlqrpQXiFEtQ9AfrN33LfFscIzbKOYjMz01mblDYA==}
+  /@hackbg/secretjs-esm@1.9.3-patch.38:
+    resolution: {integrity: sha512-K4u2MaHFxO9/33YfyrI8pLd+jaUKbpr10rj8MVHMyH0Qco2aWGC9c86UuAVzNjYYT4KKtGY1o0J73RG+i5niYQ==}
     dependencies:
       '@hackbg/dacrypt': 0.2.0
       '@hackbg/protobufjs-esm': 6.11.4-patch.1
@@ -1701,12 +1699,6 @@ packages:
 
   /@types/scheduler@0.16.3:
     resolution: {integrity: sha512-5cJ8CB4yAx7BH1oMvdU0Jh9lrEXyPkar6F9G/ERswkCuvP4KQZfZkSjcMbAICCpQTN4OuZn8tz0HiKv9TGZgrQ==}
-
-  /@types/secure-random@1.1.3:
-    resolution: {integrity: sha512-zUvl/Y/9gG2wRE5IUgqJTje0jQr97Rw+ZWovmkbkP393aUO7PR71diJlp4wKQcqucUoJVXMJdWjZfVkcoCt64w==}
-    dependencies:
-      '@types/node': 20.9.3
-    dev: false
 
   /@types/trusted-types@2.0.3:
     resolution: {integrity: sha512-NfQ4gyz38SL8sDNrSixxU2Os1a5xcdFxipAFxYEuLUlvU2uDwS4NUpsImcf1//SlWItCVMMLiylsxbmNMToV/g==}
@@ -5078,10 +5070,6 @@ packages:
 
   /secure-json-parse@2.7.0:
     resolution: {integrity: sha512-6aU+Rwsezw7VR8/nyvKTx8QpWH9FrcYiXXlqC4z5d5XQBDRqtbfsRjnwGyqbi3gddNtWHuEk9OANUotL26qKUw==}
-    dev: false
-
-  /secure-random@1.1.2:
-    resolution: {integrity: sha512-H2bdSKERKdBV1SwoqYm6C0y+9EA94v6SUBOWO8kDndc4NoUih7Dv6Tsgma7zO1lv27wIvjlD0ZpMQk7um5dheQ==}
     dev: false
 
   /semver@6.3.1:

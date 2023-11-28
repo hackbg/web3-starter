@@ -37,7 +37,7 @@ export function SiteHeader() {
               </div>
             </Link>
             <Link
-              href={siteConfig.links.twitter}
+              href={siteConfig.links.x}
               target="_blank"
               rel="noreferrer"
             >
@@ -50,8 +50,8 @@ export function SiteHeader() {
                   'w-9 px-0',
                 )}
               >
-                <Icons.twitter className="h-5 w-5 fill-current" />
-                <span className="sr-only">Twitter</span>
+                <Icons.x className="h-5 w-5 fill-current" />
+                <span className="sr-only">X</span>
               </div>
             </Link>
             <ModeToggle />

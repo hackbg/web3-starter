@@ -12,7 +12,8 @@
     "prettier:write": "prettier --write ."
   },
   "dependencies": {
-    "@hackbg/fadroma": "2.0.0-rc.16",
+    "@fadroma/scrt": "11.0.0-rc.8",
+
     "@radix-ui/react-alert-dialog": "^1.0.5",
     "@radix-ui/react-collapsible": "^1.0.3",
     "@radix-ui/react-dialog": "1.0.4",

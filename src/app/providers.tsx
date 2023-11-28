@@ -1,21 +1,23 @@
 'use client'
-
 import * as React from 'react'
-import { WagmiConfig } from 'wagmi'
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit'
+import * as Scrt from '@fadroma/scrt'
+import type Connection from '@fadroma/scrt'
+//import { WagmiConfig } from 'wagmi'
+//import { RainbowKitProvider } from '@rainbow-me/rainbowkit'
+//import { chains, config } from '../wagmi'
 
-import Scrt from '@fadroma/scrt'
+const { Provider, Consumer } = React.createContext({ scrt: null as null|Connection })
 
-const Context = React.createContext({
-  scrt: new Scrt.testnet()
-})
+export default Consumer
 
-const { Provider } = Context
-
-type ProvidersProps = {
-  children: React.ReactNode
-}
-
-export function Providers({ children }: ProvidersProps) {
-  return <Provider>{children}</Provider>
+export function Providers(props: { children: React.ReactNode }) {
+  return (
+    //<WagmiConfig config={config}>
+      //<RainbowKitProvider chains={chains}>
+        <Provider value={{scrt: Scrt.testnet()}}>{
+          props.children
+        }</Provider>
+      //</RainbowKitProvider>
+    //</WagmiConfig>
+  )
 }

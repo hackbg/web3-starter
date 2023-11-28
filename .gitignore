@@ -22,7 +22,7 @@
 # misc
 
 .DS_Store
-\*.pem
+*.pem
 
 # debug
 
@@ -34,7 +34,7 @@ yarn-error.log*
 # local env files
 
 .env
-.env\*.local
+.env*.local
 
 # vercel
 
@@ -42,5 +42,5 @@ yarn-error.log*
 
 # typescript
 
-\*.tsbuildinfo
+*.tsbuildinfo
 next-env.d.ts

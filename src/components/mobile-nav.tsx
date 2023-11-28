@@ -42,6 +42,9 @@ export function MobileNav() {
             <MobileLink href="/" onOpenChange={setOpen}>
               Home
             </MobileLink>
+            <MobileLink href="/#features" onOpenChange={setOpen}>
+              Features
+            </MobileLink>
             <MobileLink href="/demo" onOpenChange={setOpen}>
               Demo
             </MobileLink>

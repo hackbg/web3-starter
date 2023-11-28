@@ -27,7 +27,7 @@ function PageHeaderHeading({
   return (
     <h1
       className={cn(
-        'text-3xl font-bold leading-tight tracking-tighter md:text-5xl lg:leading-[1.1]',
+        'inline-block font-heading text-4xl lg:text-5xl',
         className,
       )}
       {...props}
@@ -41,10 +41,7 @@ function PageHeaderDescription({
 }: React.HTMLAttributes<HTMLParagraphElement>) {
   return (
     <Balance
-      className={cn(
-        'max-w-[750px] text-lg text-muted-foreground sm:text-xl',
-        className,
-      )}
+      className={cn('text-xl text-muted-foreground', className)}
       {...props}
     />
   )

@@ -30,6 +30,12 @@ export function MainNav() {
           Home
         </Link>
         <Link
+          href="/#features"
+          className="text-foreground/60 transition-colors hover:text-foreground/80"
+        >
+          Features
+        </Link>
+        <Link
           href="/demo"
           className={cn(
             'transition-colors hover:text-foreground/80',

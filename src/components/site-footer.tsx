@@ -15,7 +15,15 @@ export function SiteFooter() {
             >
               hackbg
             </a>
-            . The source code is available on{' '}
+            . Inspired by{' '}
+            <a
+              href="https://ui.shadcn.com"
+              target="_blank"
+              className="font-medium underline underline-offset-4"
+            >
+              shadcn/ui
+            </a>
+            . The source code is on{' '}
             <a
               href={siteConfig.links.github}
               target="_blank"

@@ -20,7 +20,7 @@ export const ConnectButton = () => {
       <Height />
       <button className="bg-primary text-primary-foreground text-sm rounded-md px-2 py-1" onClick={connect}>
         connect to<> </>
-        <strong>Secret Network</strong>
+        <strong>Secret&nbsp;Network</strong>
       </button>
     </>
   }

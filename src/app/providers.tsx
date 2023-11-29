@@ -8,15 +8,13 @@ import * as Scrt from '@fadroma/scrt'
 export interface IContext {
   scrt?:   Scrt.default
   height:  number
-  update:  ()=>Promise<void>
   connect: ()=>Promise<void>
 }
 
-const stub = () => { throw new Error('this function stub should be unreachable') }
+const stub = () => { throw new Error('this placeholder should be unreachable') }
 
 export const FadromaContext = React.createContext<IContext>({
   height:  -Infinity,
-  update:  stub,
   connect: stub,
 })
 
@@ -29,51 +27,38 @@ export const {
   Consumer: FadromaConsumer,
 } = FadromaContext
 
+const testnet = Scrt.testnet()
+
 export function Providers (props: { children: React.ReactNode }) {
-  console.warn('render Providers')
-  const scrt = Scrt.testnet()
-  const [height, setHeight] = React.useState(-Infinity)
+  console.log('render')
+  const [connection, setConnection] = React.useState(testnet)
+  const [identity,   setIdentity]   = React.useState(null)
+  const [height,     setHeight]     = React.useState(-Infinity)
+  React.useEffect(()=>{
+    const update = async () => {
+      const t0 = performance.now()
+      setHeight(await connection.height)
+      console.debug('update in', performance.now() - t0)
+      timer = setTimeout(update, 2500)
+    }
+    let timer = setTimeout(update, 0)
+    return () => clearTimeout(timer)
+  }, [connection])
   const context = {
-    scrt,
+    connection,
+    identity,
     height,
-    update: async () => {
-      scrt.height.then(h=>setHeight(h))
-    },
     connect: async () => {
       console.log(Scrt)
     }
   }
-  context.update()
+  //context.update()
+
   return (
     //<WagmiConfig config={config}>
       //<RainbowKitProvider chains={chains}>
         <FadromaContext.Provider value={context}>{props.children}</FadromaContext.Provider>
       //</RainbowKitProvider>
     //</WagmiConfig>
-  )
-}
-
-export const LocalStateContextProvider = ({
-  children,
-}: {
-  children: React.ReactNode
-}) => {
-  const [predictions, setPredictionsState] = React.useState<Prediction[]>([])
-  const [error, setError] = React.useState('')
-  const [tab, setTab] = React.useState('betslip')
-  const setPredictions = (predictions: Prediction[]) => {
-    if (predictions.some((p) => liveGameStatuses.includes(p.game.status))) {
-      setError('You cannot make predictions for live Games')
-      setTimeout(() => setError(''), 5000)
-      return
-    }
-    setPredictionsState(predictions)
-  }
-  return (
-    <LocalStateContext.Provider
-      value={{ predictions, error, setPredictions, tab, setTab }}
-    >
-      {children}
-    </LocalStateContext.Provider>
   )
 }

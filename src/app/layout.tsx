@@ -6,7 +6,6 @@ import { fontSans, fontHeading } from '@/lib/fonts'
 import { cn } from '@/lib/utils'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
-import { ThemeProvider } from '@/components/theme-provider'
 import { Providers } from '@/app/providers'
 
 export const metadata = {
@@ -27,15 +26,13 @@ export default function RootLayout({
           fontHeading.variable,
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <Providers>
           <div className="relative flex min-h-screen flex-col">
-            <Providers>
-              <SiteHeader />
-              <div className="flex-1">{children}</div>
-              <SiteFooter />
-            </Providers>
+            <SiteHeader />
+            <div className="flex-1">{children}</div>
+            <SiteFooter />
           </div>
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   )

@@ -9,6 +9,7 @@ import {
   PageHeaderHeading,
 } from '@/components/page-header'
 import { Icons } from '@/components/icons'
+import { ChainCard } from '@/app/providers'
 
 export default function Page() {
   return (
@@ -19,6 +20,12 @@ export default function Page() {
           Create Ethereum dApps optimized for user and developer experience.
         </PageHeaderDescription>
         <div className="flex w-full items-center space-x-4 pb-8 pt-4 md:pb-10">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <ChainCard chainId="secret-4" />
+            <ChainCard chainId="pulsar-3" />
+            <ChainCard chainId="okp4-nemeton-1" />
+          </div>
+
           <Link href="/demo" className={cn(buttonVariants())}>
             Go to Demo
           </Link>

@@ -9,7 +9,27 @@ import { SiteFooter } from '@/components/site-footer'
 import { Providers } from '@/app/providers'
 
 export const metadata = {
-  title: siteConfig.name,
+  title: {
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  keywords: [
+    'Next.js',
+    'React',
+    'Server Components',
+    'shadcn/ui',
+    'Ethereum',
+    'Web3',
+    'dApp',
+    'wagmi',
+  ],
+  authors: [
+    {
+      name: 'HackBG',
+      url: 'https://hack.bg',
+    },
+  ],
 }
 
 export default function RootLayout({

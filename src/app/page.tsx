@@ -15,10 +15,8 @@ export default function Page() {
   return (
     <div className="container relative pb-10">
       <PageHeader>
-        <PageHeaderHeading>Web3 Starter</PageHeaderHeading>
-        <PageHeaderDescription>
-          Create Ethereum dApps optimized for user and developer experience.
-        </PageHeaderDescription>
+        <PageHeaderHeading>Fadroma? In Next.js?</PageHeaderHeading>
+        <PageHeaderDescription>It's more likely than you think.</PageHeaderDescription>
         <div className="flex w-full items-center space-x-4 pb-8 pt-4 md:pb-10">
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             <ChainCard chainId="secret-4" />

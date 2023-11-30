@@ -5,19 +5,14 @@ import type { Connection, Identity } from '@hackbg/fadroma'
 export function Providers (props: { children: React.ReactNode }) {
   return props.children
 }
-const stub = () => {
-  throw new Error('this placeholder should be unreachable')
-}
 export interface IFadroma {
   connection?: Connection
   identity?:   Identity
   okp4?:       CW.OKP4.OKP4Connection
   height:      number
-  connect:     ()=>Promise<void>
 }
 const noContext = {
   height:  -Infinity,
-  connect: stub,
 }
 const createFadroma = (id: string) => React.createContext<IFadroma>(
   noContext
@@ -36,37 +31,46 @@ export function FadromaProvider (props: {
   children: React.ReactNode
 }) {
   const { Provider } = fadromas[props.id]
-
-  const [connection, setConnection] = React.useState(Scrt.testnet())
+  const [connection, setConnection] = React.useState<Connection|undefined>()
   const [identity,   setIdentity]   = React.useState()
   const [height,     setHeight]     = React.useState(-Infinity)
-
-  React.useEffect(pollHeight, [connection])
-
-  return <Provider value={{connection, identity, height, connect}}>
-    {props.children}
-  </Provider>
-
-  function pollHeight () {
-    const update = async () => {
-      const t0 = performance.now()
-      setHeight(await connection.height)
-      console.debug('update in', performance.now() - t0)
-      timer = setTimeout(update, 2500)
+  React.useEffect(function connect () {
+    if (props.id === 'secret-4') {
+      setConnection(Scrt.mainnet())
+    } else if (props.id === 'pulsar-3') {
+      setConnection(Scrt.testnet())
+    } else if (props.id === 'okp4-nemeton-1') {
+      setConnection(CW.OKP4.testnet())
+    } else {
+      throw new Error(`unsupported chain id ${props.id}`)
     }
-    let timer = setTimeout(update, 0)
+  }, [props.id])
+  React.useEffect(function pollHeight () {
+    console.log('init poll height')
+    let timer = setTimeout(async function update () {
+      if (connection) {
+        console.debug('updating', connection.chainId)
+        const t0 = performance.now()
+        setHeight(await connection.height)
+        console.debug('update in', performance.now() - t0)
+      } else {
+        console.warn(`can't update ${props.id}, no connection`)
+      }
+      timer = setTimeout(update, 2500)
+    }, 0)
     return () => clearTimeout(timer)
-  }
-
-  async function connect () {
-    // TODO: connect Keplr
-  }
+  }, [connection, props.id])
+  const context = {connection, identity, height}
+  return <Provider value={context}>{props.children}</Provider>
 }
-
 export function ChainCard (props: { chainId: keyof typeof fadromas }) {
-  const { connection, identity, height, connect } = useFadroma(props.chainId)
-  return <div className="rounded-xl border bg-card text-card-foreground shadow">
-    {props.chainId}
+  return <FadromaProvider id={props.chainId}><ChainCardInner {...props} /></FadromaProvider>
+}
+function ChainCardInner (props: { chainId: keyof typeof fadromas }) {
+  const { connection, identity, height } = useFadroma(props.chainId)
+  return <div className="rounded-xl p-2 border bg-card text-card-foreground shadow">
+    <div><strong>{props.chainId}</strong></div>
+    {(height > 0) ? <div>Height: {height}</div> : null }
   </div>
 }
 

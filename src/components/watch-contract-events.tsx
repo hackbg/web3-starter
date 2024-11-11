@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { Log, stringify } from 'viem'
-import { useContractEvent } from 'wagmi'
+import { useWatchContractEvent } from 'wagmi'
 import { ChevronsUpDown } from 'lucide-react'
 
 import { usdcContractConfig, wagmiContractConfig } from '@/config/contracts'
@@ -16,18 +16,18 @@ import {
 export function WatchContractEvents() {
   const [isUsdcLogsOpen, setIsUsdcLogsOpen] = useState(false)
   const [usdcLogs, setUsdcLogs] = useState<Log[]>([])
-  useContractEvent({
+  useWatchContractEvent({
     ...usdcContractConfig,
     eventName: 'Transfer',
-    listener: (logs) => setUsdcLogs((x) => [...x, ...logs]),
+    onLogs: (logs) => setUsdcLogs((x) => [...x, ...logs]),
   })
 
   const [isWagmiLogsOpen, setIsWagmiLogsOpen] = useState(false)
   const [wagmiLogs, setWagmiLogs] = useState<Log[]>([])
-  useContractEvent({
+  useWatchContractEvent({
     ...wagmiContractConfig,
     eventName: 'Transfer',
-    listener: (logs) => setWagmiLogs((x) => [...x, ...logs]),
+    onLogs: (logs) => setWagmiLogs((x) => [...x, ...logs]),
   })
 
   return (

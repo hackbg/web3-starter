@@ -1,18 +1,34 @@
 'use client'
 
 import { useState } from 'react'
-import { type Address, useToken } from 'wagmi'
+import { useReadContracts } from 'wagmi'
+import { erc20Abi, formatUnits, type Address } from 'viem'
 import { AlertCircle } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert'
+import { wagmiContractConfig } from '@/config/contracts'
 
 export function Token() {
   const [address, setAddress] = useState<Address>(
     '0x1f9840a85d5af5bf1d1762f925bdaddc4201f984', // UNI
   )
-  const { data, error, isError, isLoading, refetch } = useToken({ address })
+
+  const { data, error, isError, isLoading, refetch } = useReadContracts({
+    allowFailure: false,
+    contracts: ['totalSupply', 'decimals', 'symbol'].map((functionName) => ({
+      address,
+      abi: erc20Abi,
+      functionName,
+    })),
+  })
+
+  const [totalSupply, decimals, symbol] = (data ?? []) as [
+    bigint,
+    number,
+    string,
+  ]
 
   return (
     <>
@@ -29,7 +45,7 @@ export function Token() {
 
       {data && (
         <div className="mt-4">
-          Total Supply: {data.totalSupply?.formatted} {data.symbol}
+          Total Supply: {formatUnits(totalSupply, decimals)} {symbol}
         </div>
       )}
 

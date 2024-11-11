@@ -1,6 +1,6 @@
 'use client'
 
-import { useContractReads } from 'wagmi'
+import { useReadContracts } from 'wagmi'
 
 import { wagmiContractConfig } from '@/config/contracts'
 import {
@@ -30,7 +30,7 @@ const contractReads = [
 ]
 
 export function ReadContracts() {
-  const { data, isSuccess, isLoading } = useContractReads({
+  const { data, isSuccess, isLoading } = useReadContracts({
     contracts: contractReads,
   })
 

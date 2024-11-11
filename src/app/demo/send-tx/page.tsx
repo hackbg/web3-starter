@@ -1,5 +1,4 @@
 import { SendTransaction } from '@/components/send-transaction'
-import { SendTransactionPrepared } from '@/components/send-transaction-prepared'
 import { CardSkeleton } from '@/components/card-skeleton'
 import { ClientOnly } from '@/components/client-only'
 import { Connected } from '@/components/connected'
@@ -41,15 +40,6 @@ export default function Page() {
             </CardHeader>
             <CardContent>
               <SendTransaction />
-            </CardContent>
-          </Card>
-
-          <Card className="mb-4 md:w-[720px]">
-            <CardHeader>
-              <CardTitle>Send Transaction (Prepared)</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <SendTransactionPrepared />
             </CardContent>
           </Card>
         </Connected>

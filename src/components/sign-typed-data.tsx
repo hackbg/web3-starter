@@ -1,8 +1,8 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { recoverTypedDataAddress } from 'viem'
-import { type Address, useSignTypedData } from 'wagmi'
+import { recoverTypedDataAddress, type Address } from 'viem'
+import { useSignTypedData } from 'wagmi'
 import { Terminal, AlertCircle } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
@@ -40,12 +40,7 @@ const message = {
 } as const
 
 export function SignTypedData() {
-  const { data, error, isLoading, signTypedData } = useSignTypedData({
-    domain,
-    types,
-    message,
-    primaryType: 'Mail',
-  })
+  const { data, error, isPending, signTypedData } = useSignTypedData()
 
   const [recoveredAddress, setRecoveredAddress] = useState<Address>()
   useEffect(() => {
@@ -67,13 +62,20 @@ export function SignTypedData() {
     <>
       <Button
         variant="outline"
-        disabled={isLoading}
-        onClick={() => signTypedData()}
+        disabled={isPending}
+        onClick={() =>
+          signTypedData({
+            domain,
+            types,
+            message,
+            primaryType: 'Mail',
+          })
+        }
       >
         Sign Message
       </Button>
 
-      {isLoading && <div className="mt-3">Check Wallet...</div>}
+      {isPending && <div className="mt-3">Check Wallet...</div>}
 
       {data && (
         <Alert className="mt-4">

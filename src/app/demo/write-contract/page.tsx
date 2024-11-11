@@ -1,5 +1,4 @@
 import { WriteContract } from '@/components/write-contract'
-import { WriteContractPrepared } from '@/components/write-contract-prepared'
 import { CardSkeleton } from '@/components/card-skeleton'
 import { ClientOnly } from '@/components/client-only'
 import { Connected } from '@/components/connected'
@@ -41,15 +40,6 @@ export default function Page() {
             </CardHeader>
             <CardContent>
               <WriteContract />
-            </CardContent>
-          </Card>
-
-          <Card className="mb-4 md:w-[720px]">
-            <CardHeader>
-              <CardTitle>Write Contract (Prepared)</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <WriteContractPrepared />
             </CardContent>
           </Card>
         </Connected>

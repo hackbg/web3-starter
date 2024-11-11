@@ -1,6 +1,6 @@
 'use client'
 
-import { useNetwork, useSwitchNetwork, mainnet } from 'wagmi'
+import { useSwitchChain, useAccount } from 'wagmi'
 import { AlertCircle } from 'lucide-react'
 
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
@@ -12,36 +12,29 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 
-const otherChains = [mainnet]
-
 export function NetworkSwitcher() {
-  const { chain } = useNetwork()
-  const { chains, error, isLoading, pendingChainId, switchNetwork } =
-    useSwitchNetwork()
+  const { chain } = useAccount()
+  const { chains, error, isPending, switchChain } = useSwitchChain()
 
   return (
     <>
-      <a>
-        Connected to {chain?.name ?? chain?.id}
-        {chain?.unsupported && ' (unsupported)'}
-      </a>
-      {switchNetwork && (
+      <a>Connected to {chain?.name ?? chain?.id}</a>
+      {switchChain && (
         <div className="mt-4">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline">
-                {isLoading ? 'Switching...' : 'Switch'}
+              <Button variant="outline" disabled={isPending}>
+                {isPending ? 'Switching...' : 'Switch'}
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
-              {[...chains, ...otherChains].map((x) =>
+              {[...chains].map((x) =>
                 x.id === chain?.id ? null : (
                   <DropdownMenuItem
                     key={x.id}
-                    onClick={() => switchNetwork(x.id)}
+                    onClick={() => switchChain({ chainId: x.id })}
                   >
                     {x.name}
-                    {isLoading && x.id === pendingChainId && ' (switching)'}
                   </DropdownMenuItem>
                 ),
               )}

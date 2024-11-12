@@ -15,7 +15,7 @@ export default function Page() {
           <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
             Create Ethereum dApps optimized for user and developer experience.
           </p>
-          <div className="space-x-4">
+          <div className="space-y-4 md:space-x-4">
             <Link href="/demo" className={cn(buttonVariants({ size: 'lg' }))}>
               Go to Demo
             </Link>

@@ -16,7 +16,7 @@ export function WatchPendingTransactions() {
   const [isOpen, setIsOpen] = useState(false)
   const [hashes, setHashes] = useState<Hex[]>([])
   useWatchPendingTransactions({
-    listener: (hashes) => setHashes((x) => [...x, ...hashes]),
+    onTransactions: (hashes) => setHashes((x) => [...x, ...hashes]),
   })
 
   const hashesOrdered = hashes.slice().reverse()

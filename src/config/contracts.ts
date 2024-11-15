@@ -1,4 +1,4 @@
-import { erc20ABI } from 'wagmi'
+import { erc20Abi } from 'viem'
 
 export const wagmiContractConfig = {
   address: '0xDBBFC341d96dBE82F9D0917626b5711dfAb2aCbe',
@@ -205,5 +205,5 @@ export const wagmiContractConfig = {
 
 export const usdcContractConfig = {
   address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
-  abi: erc20ABI,
+  abi: erc20Abi,
 } as const

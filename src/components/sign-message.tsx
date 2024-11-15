@@ -1,8 +1,8 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { recoverMessageAddress } from 'viem'
-import { type Address, useSignMessage } from 'wagmi'
+import { recoverMessageAddress, type Address } from 'viem'
+import { useSignMessage } from 'wagmi'
 import { AlertCircle, Terminal } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
@@ -15,7 +15,7 @@ export function SignMessage() {
     data: signature,
     variables,
     error,
-    isLoading,
+    isPending,
     signMessage,
   } = useSignMessage()
 
@@ -47,14 +47,14 @@ export function SignMessage() {
         <Button
           className="w-[74px]"
           variant="outline"
-          disabled={isLoading}
+          disabled={isPending}
           type="submit"
         >
           Sign
         </Button>
       </form>
 
-      {isLoading && <div className="mt-3">Check Wallet...</div>}
+      {isPending && <div className="mt-3">Check Wallet...</div>}
       {signature && (
         <Alert className="mt-4">
           <Terminal className="h-4 w-4" />

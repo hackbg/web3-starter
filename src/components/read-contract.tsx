@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { BaseError } from 'viem'
-import { type Address, useContractRead } from 'wagmi'
+import { type Address, BaseError } from 'viem'
+import { useReadContract } from 'wagmi'
 import { AlertCircle } from 'lucide-react'
 
 import { wagmiContractConfig } from '@/config/contracts'
@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button'
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert'
 
 export function TotalSupply() {
-  const { data, isRefetching, refetch } = useContractRead({
+  const { data, isRefetching, refetch } = useReadContract({
     ...wagmiContractConfig,
     functionName: 'totalSupply',
   })
@@ -33,13 +33,13 @@ export function TotalSupply() {
 
 export function BalanceOf() {
   const [address, setAddress] = useState<Address>(
-    '0xa5cc3c03994DB5b0d9A5eEdD10CabaB0813678AC',
+    '0xDF5599366Df97e966fDFcBE8Da6DcabDbF4c2EC6',
   )
-  const { data, error, isLoading, isSuccess } = useContractRead({
+  const { data, error, isLoading, isSuccess } = useReadContract({
     ...wagmiContractConfig,
     functionName: 'balanceOf',
     args: [address],
-    enabled: Boolean(address),
+    query: { enabled: Boolean(address) },
   })
 
   const [value, setValue] = useState<string>(address)

@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import type { Address } from 'wagmi'
 import { useAccount, useBalance } from 'wagmi'
+import { formatUnits, type Address } from 'viem'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -11,12 +11,11 @@ export function AccountBalance() {
   const { address } = useAccount()
   const { data, refetch } = useBalance({
     address,
-    watch: true,
   })
 
   return (
     <>
-      <div>{data?.formatted}</div>
+      <div>{data && formatUnits(data.value, data.decimals)}</div>
       <Button className="mt-4" variant="outline" onClick={() => refetch()}>
         Refetch
       </Button>
@@ -47,7 +46,9 @@ export function FindBalance() {
           {isLoading ? 'Fetching...' : 'Fetch'}
         </Button>
       </div>
-      <div className="mt-4">{data?.formatted}</div>
+      <div className="mt-4">
+        {data && formatUnits(data.value, data.decimals)}
+      </div>
     </>
   )
 }

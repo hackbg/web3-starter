@@ -10,7 +10,12 @@ import { demoConfig } from '@/config/demo'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet'
 import { Icons } from '@/components/icons'
 import { DemoSidebarNav } from '@/components/sidebar-nav'
 
@@ -28,7 +33,8 @@ export function MobileNav() {
           <span className="sr-only">Toggle Menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent size="xl" position="left" className="pr-0">
+      <SheetContent side="left" className="pr-0 w-4/5">
+        <SheetTitle className="sr-only">Mobile navigation</SheetTitle>
         <MobileLink
           href="/"
           className="flex items-center"

@@ -1,28 +1,10 @@
-import { getDefaultWallets } from '@rainbow-me/rainbowkit'
-import { configureChains, createConfig } from 'wagmi'
-import { sepolia } from 'wagmi/chains'
-import { alchemyProvider } from 'wagmi/providers/alchemy'
-import { publicProvider } from 'wagmi/providers/public'
+import { getDefaultConfig } from '@rainbow-me/rainbowkit'
+import { http } from 'wagmi'
+import { sepolia, mainnet } from 'wagmi/chains'
 
-const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [sepolia],
-  [
-    alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY! }),
-    publicProvider(),
-  ],
-)
-
-const { connectors } = getDefaultWallets({
+export const config = getDefaultConfig({
   appName: 'web3-starter',
-  chains,
   projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_ID!,
+  chains: [sepolia, mainnet],
+  transports: { [sepolia.id]: http(), [mainnet.id]: http() },
 })
-
-export const config = createConfig({
-  autoConnect: true,
-  connectors,
-  publicClient,
-  webSocketPublicClient,
-})
-
-export { chains }

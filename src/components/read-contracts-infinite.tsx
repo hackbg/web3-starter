@@ -1,6 +1,6 @@
 'use client'
 
-import { paginatedIndexesConfig, useContractInfiniteReads } from 'wagmi'
+import { useInfiniteReadContracts } from 'wagmi'
 
 import { wagmiContractConfig } from '@/config/contracts'
 import {
@@ -14,19 +14,44 @@ import {
 import { Button } from '@/components/ui/button'
 
 export function ReadContractsInfinite() {
-  const { data, isLoading, isSuccess, fetchNextPage } =
-    useContractInfiniteReads({
-      cacheKey: 'wagmiTokenURIs',
-      ...paginatedIndexesConfig(
-        (index: number) => [
-          {
+  const result = useInfiniteReadContracts({
+    cacheKey: 'wagmiTokenURIs',
+    contracts(pageParam) {
+      return [...new Array(5)].map(
+        (_, i) =>
+          ({
             ...wagmiContractConfig,
             functionName: 'ownerOf',
-            args: [BigInt(index)] as const,
-          },
-        ],
-        { start: 0, perPage: 5, direction: 'increment' },
-      ),
+            args: [BigInt(pageParam + i)],
+          }) as const,
+      )
+    },
+    query: {
+      initialPageParam: 0,
+      getNextPageParam(_lastPage, _allPages, lastPageParam) {
+        return lastPageParam + 5
+      },
+    },
+  })
+  const { data, isLoading, isSuccess, fetchNextPage } =
+    useInfiniteReadContracts({
+      cacheKey: 'wagmiTokenURIs',
+      contracts(pageParam) {
+        return [...new Array(5)].map(
+          (_, i) =>
+            ({
+              ...wagmiContractConfig,
+              functionName: 'ownerOf',
+              args: [BigInt(pageParam + i)],
+            }) as const,
+        )
+      },
+      query: {
+        initialPageParam: 0,
+        getNextPageParam(_lastPage, _allPages, lastPageParam) {
+          return lastPageParam + 5
+        },
+      },
     })
 
   return (
@@ -42,6 +67,8 @@ export function ReadContractsInfinite() {
               </TableRow>
             </TableHeader>
             <TableBody>
+              {/* TODO: find a fix for the wrong data type */}
+              {/* @ts-ignore */}
               {data?.pages.flat().map((data, idx) => (
                 <TableRow key={idx}>
                   <TableCell>{data.status}</TableCell>
